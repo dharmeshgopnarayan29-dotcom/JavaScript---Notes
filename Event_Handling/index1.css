@@ -1,0 +1,36 @@
+*{
+  padding: 0px;
+  margin: 10px;
+
+}
+#grandparent{
+    width: 300px;
+    height: 300px;
+    background-color: rgb(219, 118, 60);
+    border: 2px solid #333;
+    margin: 10px;
+}
+
+#parent {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(7, 180, 237);
+    border: 2px solid #333;
+    margin: 10px;
+}
+
+#child {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(5, 215, 61);
+    border: 2px solid #333;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn{
+    background-color: rgb(247, 23, 224);
+}
+
