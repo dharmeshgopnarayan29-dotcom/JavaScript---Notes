@@ -184,7 +184,7 @@ const arr3 = [1,2,3,4,5];
                 arr3.unshift(29)               // Output : [29,1,2,3,4,5]   
 
             // d. array.splice(start, delete_count, ele_1, ele_2, ....)
-                arr3.splice(1,0,"Ashu")        // Output : [1,"Ashu",2,3,4,5]
+                arr3.splice(1,0,"Dhruv")        // Output : [1,"Dhruv",2,3,4,5]
 
 
 // 2. Delete Element :
@@ -246,7 +246,7 @@ const arr3 = [1,2,3,4,5];
         // ● Returns the first element that satisfies the condition inside the callback.
         // ● Returns undefined if none is found.
             let arrr3 = [5, 12, 8, 130, 44];
-            let found = arr.find(el => el > 10);      // Output : 12
+            let found = arrr3.find(el => el > 10);      // Output : 12
             
     // 6. array.findIndex(callback)
         // ● Returns the index of the first element that satisfies the condition in the callback.
@@ -318,5 +318,320 @@ const arr3 = [1,2,3,4,5];
         let hasAdult = ages2.some(age => age >= 18);      // output: true
 
 
+// Copy by value :
+    // This applies to primitive data types: numbers, strings, booleans, null, and undefined.
+    let A = 5;
+    let b = a;              // b gets A copy of 5
+    A = 10;
+    console.log(b);         // still 5, Unaffected
 
 
+// Copy by Reference :
+    // This applies to complex data types like non-primitive data types such as: objects, arrays, and functions.
+    let arrA = [2, 5, 67, 23, 1]
+    let arrB = arrA;                  // arrB references same object
+    arrB[0] = 3000;
+    console.log(arrA[0]);             // 3000, changed through arrB
+
+
+// Shallow Copy :
+    // A shallow copy in JavaScript creates a new outer object/array, but nested objects are still shared between the original and the copy.
+    // Ex :
+        let s = [1,2,3];
+        let d = [...s];         // Shallow Copy
+        d[0] = 100;
+        console.log(s)          // Output : [1,2,3]
+        console.log(d)          // Output : [100,2,3]
+
+    // Ex :
+    let s1 = [[1,2], [3,4]];
+    let d1 = [...s1];
+    d1[0][0] = 100;
+    console.log(s1);           // output : [[100,2], [3,4]]
+    console.log(d1);           // Output : [[100,2], [3,4]]
+
+    // Ex :
+    let user1 = {
+        name: "Dharmesh",
+        address: {
+            city: "Mumbai"
+            }
+        };
+
+    let user2 = { ...user1 };                     // shallow copy
+    user2.address.city = "Delhi";
+    console.log(user1.address.city);             // Delhi
+    console.log(user2.address.city);            // Delhi
+
+    // Common methods for shallow copying include :
+        const oldArray = [
+                    { name: "A" },
+                    { name: "B" }
+                    ];
+
+        // 1. Array.from()   ----> Does not Deep copy
+            // Create new array from array-like or iterable objects.
+            // Array.from(iterable, mapFn?, thisArg?)
+            let str = "hello";
+            let arrrr = Array.from(str);
+            // Output : ["h", "e", "l", "l", "o"]
+
+        // 2. Spread Operator : 
+            const newArray = [...oldArray];
+
+        // 3. Silce() :
+            const copy3 = oldArray.slice();
+            copy3[0].name = "Z";
+                // Output :  [{ name: "Z" }, { name: "B" }]
+
+        // 4. concat() :
+            const copy4 = [].concat(oldArray);
+            copy4[0].name = "P";
+            // Output : [{ name: "P" }, { name: "B" }]
+
+        // 5. map() :
+            const copy5 = oldArray.map(item => item);
+            copy5[0].name = "Q";
+               // Output : [{ name: "Q" }, { name: "B" }]
+
+
+// Deep Copy :
+    // Deep copies duplicate the elements and all nested objects or arrays, so changes in the copied array do not affect the original.
+    // Function are not supported
+
+    // Common methods for deep copying include:
+        // a. Using JSON serialization :
+            const original = [
+                    { name: "A", marks: 90 },
+                    { name: "B", marks: 85 }
+                ];
+            const copy = JSON.parse(JSON.stringify(original));
+            copy[0].marks = 100;
+            console.log(original);
+                // [{ name: "A", marks: 90 }, { name: "B", marks: 85 }]
+            console.log(copy);
+                // [{ name: "A", marks: 100 }, { name: "B", marks: 85 }]
+
+
+        // b. Modern structured cloning :
+            // Function are not supported
+            const original2 = {
+                name: "Dharmesh",
+                scores: [90, 85, 88],
+                address: { city: "Mumbai" }
+                };
+
+            const copy2 = structuredClone(original2);
+            copy2.address.city = "Delhi";
+            console.log(original2.address.city);     // Mumbai
+            console.log(copy2.address.city);         // Delhi
+
+
+// Object Method :
+    // Object methods are functions stored as properties in objects, allowing them to perform 
+    // actions or computations using the object's data. Within these methods, this refers to the owner object.
+
+    // Syntax :
+            const person = {
+                name5 : "Dharmesh",
+                greet : function () {
+                    return "Hii, I'm" + this.name5;
+                }
+            };
+
+            person.greet();    // Hii, I'm Dharmesh
+
+
+// for -in loop to iterate over object properties :
+    // Syntax : 
+        // for(let key in Object) {
+        //     // code here
+        // }
+
+        const person2 = {
+            name4 : "Shivam",
+            age : 20
+        }
+        for (let key in Object) {
+            console.log(key)
+        }                               // output : name  age
+
+
+
+// Prototype in Javascript :
+    function Person3(name6) {
+        this.name6 = name6;
+    }
+    Person3.prototype.sayHello = function() {
+        console.log(`Hello, my name is ${this.name6}.`);
+    };
+
+    const n2 = new Person3("Dharmesh");
+    n2.sayHello();              // Output : Hello, my name is Dharmesh.
+
+
+    
+
+    //  Using Object.create() :
+        // Creates a new object with the specified prototype.
+
+        const PeopleProto = {
+            greet() {
+                console.log(`Hello, My Name is ${this.name}...`);
+            }
+        };
+
+        const people = Object.create(PersonProto);
+        people.name = "Ashu";
+        people.greet();                // Output : Hello, My Name is Ashu...
+    
+
+
+
+// Common Built-in Object methods :
+
+    // 1. Using Object.create() :
+        // Creates a new object with the specified prototype.
+
+        const PeopleProto1 = {
+            greet() {
+                console.log(`Hello, My Name is ${this.name}...`);
+            }
+        };
+
+        const people = Object.create(PersonProto1);
+        people.name = "Ashu";
+        people.greet();                // Output : Hello, My Name is Ashu...
+    
+    // 2. Using Object.assign() :
+        // Copies enumerable properties from one or more source objects to a target object.
+
+        // Object.assign(target, source1, source2,...);
+            const target = {a : 1};
+            const source = {b : 2};
+            const final = Object.assign(target, source);
+                // Output : {a : 1, b : 2}
+
+    // 3. Using Object.keys() :
+        // Returns an array of a given object's own enumerable property names
+            const obj = {a : 1, b : 2};
+            Object.keys(obj);
+                // Output : ["a", "b"]
+
+
+
+// call() :
+        function greet(city) {
+            console.log(`Hi, I am ${this.name} from ${city}`);
+            }
+
+        const user = { name: "Dharmesh" };
+        greet.call(user, "Mumbai");
+            // Output : Hi, I am Dharmesh from Mumbai
+
+
+// apply() :
+        function greet(city) {
+            console.log(`Hi, I am ${this.name2} from ${city}`);
+        }
+        const user12 = {name2 : "Dharmesh"};
+        greet.apply(user12, ["Delhi"]);
+            // Output :  Hi, I am Dharmesh from Delhi
+
+
+// bind() :
+        const user123 = {
+            username123 : "Ashu",
+            age : 20,
+            address123 : "Jamshedpur",
+            getUserName : function() {
+                return this.username123;
+            }
+        };
+        function printUser() {
+            const userDetail = `User Name is ${this?.username123} having age : ${this?.age}, living in : ${this?.address123}`
+            console.log(userDetail);
+        }
+
+        printUser();    // It's give Unknown
+
+        // Explicit binding 
+        const bindFunc = printUser.bind(user123);        
+        bindFunc();      // It's Give details
+
+        // Demonstrate bind 
+        const bindedFunc = printUser.bind(user123, "extra Param")
+
+
+// Destructuring :
+    // Destructuring is a syntax in JavaScript that allows unpacking values from arrays or properties from objects into distinct variable
+    
+    // 1. Array Destructuring :
+        const arrr12 = [10,20,30];
+        const [a12,b12] = arrr12
+        console.log(a12);             // output : 10
+        console.log(b12);             // output : 20
+        
+        // Skipping Items :
+        const [a13, ,b13] = arrr12;   // output : 10 30
+        
+        // Default Items :
+        const [v = 5, w = 15] = [100];
+        console.log(v,w);              // Output : 100 15
+
+        // Rest Operator :
+        const [first, ...rest] = [1,2,3,4];
+        console.log(rest);             // Output : [2,3,4]
+
+    // 2. Object Destructuring :
+        const user1345 = { name1345: "Hari", age: 25, address: "Bangalore" };
+        const { name1345, age } = user1345;
+        console.log(name1345);             // "Hari"
+        console.log(age);                  // 25
+
+            // Property Renaming :
+                const { name: username22, age: years } = user1345;
+                console.log(username22);          // "Hari"
+                console.log(years);               // 25
+
+            // Default Values
+                // Defaults can be set if a property is missing:
+                const { country = "India" } = user;
+                console.log(country); // "India"
+
+            // Nested Destructuring
+                // Extract properties from nested objects:
+                const marks = {
+                    section1: { alpha: 15, beta: 16 },
+                    section2: { alpha: -31, beta: 19 }
+                    };
+                const { section1: { alpha, beta } } = marks;
+                console.log(alpha, beta); // 15 16
+
+            // Rest Properties
+                // Use rest to collect remaining properties:
+                const { name134, ...details } = user;
+                console.log(details); // {age: 25, address: "Bangalore"}
+
+            
+// Factory Function : 
+    // A factory function is a function that creates and returns a new object each time
+    // Unlike constructor functions, factory functions do not require the new keyword
+
+    // Factory functions are useful when you need to create multiple objects with similar properties and methods but want to avoid repeating code
+
+    function createUser(name, age) {
+        return {
+            name: name,
+            age: age,
+            greet() {
+                console.log(`Hello, my name is ${name} and I am ${age} years old.`);
+                },
+            };
+        }
+    const user11 = createUser("Hari", 25);
+    user1.greet();              // Hello, my name is Hari and I am 25 years old.
+    const user2 = createUser("Mita", 30);
+    user2.greet();              // Hello, my name is Mita and I am 30 years old.
+
+    

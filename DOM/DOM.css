@@ -1,0 +1,43 @@
+.aaa:link {
+    color: rgb(216, 10, 48);
+}
+
+.aaa:visited {
+    color: rgb(45, 210, 30);
+}
+
+.aaa:hover {
+    color: rgb(38, 235, 235);
+}
+
+.aaa:active {
+    transform: scale(0.95);
+}
+
+.container {
+    height: 400px;
+    width: 400px;
+    background-color: aqua;
+}
+
+.box1 {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    /* visibility: visible; */
+    display: block;
+}
+
+.box2 {
+    height: 100px;
+    width: 100px;
+    background-color: rgb(17, 31, 223);
+    /* visibility: hidden; */
+    display: block;
+}
+
+.box3 {
+    height: 100px;
+    width: 100px;
+    background-color: rgb(7, 243, 15);
+}

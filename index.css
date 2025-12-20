@@ -1,0 +1,177 @@
+/* .container {
+    height: 500px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 60px;
+    height: 60px;
+    border: 2px solid black;
+    background: steelblue;
+    color: white;
+    align-content: stretch;
+    
+
+} */
+
+
+/* .container {
+    height: 500px;
+    border:  2px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.box {
+    width: 60px;
+    height: 60px;
+    border: 2px solid black;
+    background: steelblue;
+    color: white;
+    align-content: stretch;
+    
+
+}  */
+
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar-wrapper {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(212, 212, 111);
+    justify-content: space-between;
+    align-items: center;
+    height: 8vh;
+}
+
+.nav-items a {
+    text-decoration: none;
+    font-size: 1.5em;
+
+}
+
+.nav-items {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger-label {
+    display: none;
+}
+
+.hamburger-checkbox {
+    display: none;
+}
+
+@media (max-width:450px) {
+    .navbar-wrapper {
+        flex-direction: column;
+    }
+
+    .nav-items {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background-color: rgb(212, 212, 111);
+        width: 100vh;
+    }
+
+    .hamburger-label {
+        font-size: 30px;
+        display: block;
+        position: absolute;
+        right: 0px;
+    }
+
+    .hamburger-checkbox:checked~.nav-items {
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+
+
+.container {
+    width: 500px;
+    height: 500px;
+    background-color: aqua;
+    border: 2px solid red;
+    /* display: flex;
+ justify-content: center;
+ align-items: flex-end;
+ */
+    /* animation: rot 5s alternate infinite; */
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: pink;
+    border: 2px solid rgb(21, 0, 255);
+    animation-name: ani;
+    animation-duration: 10s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+   
+    animation-delay: 1s;
+
+
+    /* animation-direction: alternate; */
+    /* animation: ani 10s linear infinite; */
+}
+
+
+.box:hover {
+    animation-play-state: paused;
+}
+
+.container:hover {
+    animation-play-state: paused;
+}
+
+@keyframes ani {
+    0% {
+        transform: translate(0px, 0px);
+    }
+
+    25% {
+        transform: translate(400px, 0px);
+    }
+
+    50% {
+        transform: translate(400px, 400px);
+    }
+
+    75%{
+        transform: translate(0px,400px);
+    }
+    100% {
+        transform: translate(0px,0px);
+    } 
+}
+
+@keyframes rot {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

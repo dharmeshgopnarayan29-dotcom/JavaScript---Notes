@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./DOM.css">
+
+
+</head>
+
+<body>
+    <!-- <button id="btn" onmouseleave="mouseout()" onmouseenter="mouseover()">
+        👆🏼Click Me
+    </button> -->
+
+    <!-- <script>
+        function mouseover() {
+            const btn = document.getElementById("btn");
+            btn.style.backgroundColor = "red"
+        }
+
+        function mouseout() {
+            const btn = document.getElementById("btn");
+            btn.style.backgroundColor = "blue"
+        }
+    </script> -->
+
+
+    <!-- <h2>Event Handling Using Event Attribute</h2>
+    <button onclick="updateOutputFirst()">
+        Show Image
+    </button>
+    <div id="output"></div>
+
+    <script>
+        function updateOutputFirst() {
+            const output = document.getElementById('output');
+            const image = document.createElement('img');
+            output.innerHTML = "";
+            image.setAttribute('src', 
+                'https://tse1.mm.bing.net/th/id/OIP.3BR1RBazvs6mGkD5YpRuiAHaE8?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3'
+            )
+            output.append(image);
+            output.firstElementChild.style.width = "100px";
+            output.firstElementChild.style.heigth = "100px"
+        }
+    </script> -->
+
+
+    <!-- <script>
+        function Click() {
+            
+        alert("Button Clicked...")
+        }
+    </script> -->
+
+    <!-- <button id="btn">👆🏼</button>
+    <script>
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', function() {
+            alert("First Handler...");
+        });
+
+        btn.addEventListener('click', function() {
+            alert("Second Handler...");
+        });
+    </script> -->
+
+    <!-- 
+    <script>
+        const btn = document.getElementById('outer');
+        btn.addEventListener('click', function(click) {
+            console.log('Event.target:', click.target);
+            console.log('Event.currentTarget:', click.currentTarget);
+        });
+        </script> -->
+
+    <!-- <script>
+        const outer = document.getElementById('outer');
+        const inner = document.getElementById('inner');
+        inner.addEventListener('click', function() {
+            console.log('Inner clicked');
+        })
+
+        outer.addEventListener('click', function(){
+            console.log('Outer clicked');
+        });
+    </script> -->
+
+    <!-- <div id="outer">
+        <button id="inner">👆🏼Click</button>
+    </div>
+    <script>
+        const outer = document.getElementById('outer');
+        const inner = document.getElementById('inner');
+        inner.addEventListener('click', function(event) {
+            event.stopPropagation();
+            console.log('Inner clicked, Propagation');
+        });
+    </script> -->
+
+    <!-- <ul id="list">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+
+    <script>
+        const list = document.getElementById('list');
+        list.addEventListener('click', function(event) {
+            if (event.target.tagName === 'li') {
+                console.log('Clicked :', event.target.textContent);
+            }
+        });
+    </script> -->
+
+    <!-- <form id="myForm">
+        <input type="text" id="username" placeholder="Enter">
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        const form = document.getElementById('myForm');
+        form,addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            console.log('Username :', username);
+        })
+    </script> -->
+
+    <!-- <form id="myForm">
+        <div id="container">
+            <button type="submit">👆🏼Submit</button>
+        </div>
+    </form>
+
+    <script>
+        const form = document.getElementById('myForm');
+        const container = document.getElementById('container')
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            console.log("From Submitted...");
+        })
+
+        container.addEventListener('click', function(event) {
+            event.stopPropagation();
+            console.log('Container Clicked...')
+        });
+    </script> -->
+
+
+    <!-- <h1>Todo List</h1>
+    <div id="todoApp">
+        <form id="taskInput">
+            <input type="text" name="task" id="task" value="" placeholder="Please Input new task">
+            <button id="addTask">Add Task</button>
+        </form>
+        <ul id="todoList">
+
+        </ul>
+    </div>
+
+    <Script>
+        const addTask = document.getElementById('addTask');
+        const task = document.getElementById("task");
+        const todoList = document.getElementById('todoList');
+        addTask.addEventListener('click', (e) => {
+            e.preventDefault()
+            if (task.value !== "") {
+                const currentTask = task.value;
+                const existingItems = todoList.innerHTML;
+                const newList = existingItems + `<li>
+                    ${currentTask}
+                    <button class="delete">delete</button>
+                    <button class="edit">edit</button>
+                </li>`
+
+                todoList.innerHTML = newList;
+                task.value = "";
+            } else {
+                alert("Please enter task!!!")
+            }
+        })
+        todoList.addEventListener('click', (e) => {
+            console.log(e.target);
+            if (e.target.classList.contains("delete")) {
+                e.target.parentNode.remove();
+            } else if (e.target.classList.contains("edit")) {
+                alert("Edit button clicked")
+            }
+        })
+
+    </Script> -->
+
+    <!-- <div id="container"></div>
+
+    <script>
+        const newElement = document.createElement('p');
+        newElement.textContent = "Hello From JS";
+        newElement.setAttribute('id', 'myPara');
+
+        const container = document.getElementById('container');
+        container.appendChild(newElement);
+
+    </script>
+
+    <button id="btn" class="High">Click</button>
+    <button id="del">Delete</button>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const del = document.getElementById('del');
+
+        btn.addEventListener('click', () => {
+
+            if (btn.classList.contains("High")) {
+                btn.classList.remove("High");
+            } else {
+                btn.classList.add("High");
+            }
+        })
+
+    </script> -->
+
+
+    <!-- <script>
+        setTimeout(() => {
+            console.log("This message appears after 2 seconds...");
+        }, 2000);
+
+        const set = setInterval(() => {
+            console.log("Runs every @ seconds...");
+        }, 1000);
+
+        clearInterval(set);
+    </script> -->
+
+    <!-- <script>
+
+        console.log("first");
+        console.log("second");
+        const id = setTimeout(() => {
+            console.log("Settimeout");
+        }, 5);
+        console.log("third");
+        console.log("fourth");
+        // setTimeOut
+        setTimeout(() => {
+            console.log("set22")
+        }, 0)
+        setTimeout(() => {
+            console.log("Settimeoutn 2222");
+        }, 0);
+    </script> -->
+
+    <!-- <script>
+        function show(name, age, ...hobbies) {
+            console.log(`Name : ${name}, Age : ${age}`);
+            console.log(`Hobbies : ${hobbies.join(",")}`);
+        }
+
+        show("Dharmesh",20, ["REading", "Coding", "Music", "Sports"])
+
+        const p = {};
+        p.x = 10;
+        p["long-key"] = "true";
+        console.log(p)
+        delete p.x;
+        console.log(p);
+        p["long-key"] = "False"
+        console.log(p)
+    </script>  -->
+
+
+    <!-- <button id="btn">👆🏼Click</button>
+    <script>
+        const clickHandler = () => {
+            console.log("Login Successfull");
+            removeClickhandler();
+        };
+        document.getElementById('btn').addEventListener('click', clickHandler);
+
+        function removeClickhandler() {
+            document.getElementById('btn').removeEventListener('click', clickHandler);
+        }
+
+    </script> -->
+
+    <!-- <script>
+        let x = 10;
+        function one() {
+            let y = 20;
+            function two() {
+                let z = 30;
+                console.log(x,y,z);
+                console.log(x + y + z);
+            }
+            two();
+        }
+
+        one();
+
+
+        function makeCounter() {
+            let count = 0;
+            return function() {
+                return count++;
+            };
+        }
+        const counter = makeCounter();
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+    </script> -->
+    <!-- 
+    <script>
+        const getData = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Data received after 2 seconds...");
+            }, 2000);
+        });
+        getData.then(data => console.log(data));
+
+
+        const getNumber = new Promise((resolve, reject) => {
+            let num = 4;
+            if (num % 2 === 0) {
+                setTimeout(() => {
+                    resolve("Even number");
+                }, 2000);
+            } else {
+                reject("Odd number");
+            }
+        });
+        getNumber
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+            
+
+        const user = fetch('/api/user');
+        const post = fetch('/api/post');
+        const comment = fetch('/api/comment');
+
+        Promise.all([user, post, comment])
+            .then((u, p, c) => {
+                console.log('All data Loaded :', user, post, comment);
+            })
+            .catch(error => console.log("Error :", error));
+
+
+
+        const primary =  fetch('https://primary-api.com/data');
+        const backup1 = fetch('https://backup1-api.com/data');
+        const backup2 = fetch('https://backup2-api.com/data');
+
+        Promise.any([primary, backup1, backup2])
+            .then(res => {
+                console.log("Got response form :", res)
+            })
+            .catch(err => console.log("All Endpoint Failed :", err));
+
+        
+        function xhrReq() {
+            const xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                console.log(this.responseText);
+            };
+            xhr.open('GET', 'https://dummyjson.com/products');
+            xhr.send();
+        }
+        xhrReq();
+
+
+    </script> -->
+
+
+    <!-- <script>
+        async function getData() {
+            try {
+                const data = await fetchData();
+                console.log(data);
+            } catch (err) {
+                console.log(arr);
+            }
+        }
+        getData();
+
+
+        function delay(ms) {
+            new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(`Delay for ${ms} second...`)
+                }, ms)
+            });
+        }
+
+        async function run() {
+            console.log("Start");
+            const msg = await delay(2000);
+            console.log(msg);
+            console.log("End");
+        }
+        run();
+
+    </script> -->
+
+
+    <!-- <script>
+        const promise = new Promise((resolve, reject) => {
+            let a = 6;
+            if (a > 5) {
+                resolve("a is greater than 5...");
+            } else {
+                reject("a is smaller than 5...");
+            }
+        });
+
+        promise
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    </script> -->
+
+    <!-- <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('');
+                const data = await response.json();
+                console.log("data");
+            } catch (error) {
+                console.log("Error: ", error);
+            } finally {
+                console.log("Done")
+            }
+        }
+        fetchData();
+    </script> -->
+
+
+    <!-- <script>
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(res => res.json())
+            .catch(data => console.log(data));
+
+    // GET Method
+        fetch('https://jsonplaceholder.typicode.com/posts/1')
+            .then(res => res.json())
+            .then(data => console.log(data));
+
+    // POST Method
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: {
+                'content-Type' : 'application/json'
+            },
+            body: JSON.stringify({
+                title : 'My POST',
+                body : 'Hello API',
+                userId : 1
+            })
+        })
+            
+        .then(res => res.json())
+        .then(data => console.log(data));
+        
+    // PATCH Method
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'PATCH',
+            headers : {
+                'Content-Type' : "application/json"
+            },
+            body: JSON.stringify({
+                title: "Only Tile Updated"
+            })
+        })
+        .then(res => res.json())
+        .then(data => console.log(data));
+
+    // DELETE Method
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'DELETE',
+        })
+            .then(res => {
+                if (res.ok) {
+                    console.log('Post deleted');
+                }
+            })
+    
+    </script>
+
+
+    <script>
+    
+    // GET Method
+        fetch('https://jsonplaceholder.typicode.com/posts/1')
+        .then(res => res.json())
+        .then(data => console.log(data));
+
+    // POST Method
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            methos:'POST',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify({
+                title: "Foo", body: 'bar', userId: 1
+            })
+        })
+        .then(res => res.json())
+        .then(data => console.log(data));
+
+    // PATCH Method
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'PATCH',
+            headers: {'Content-Type' : 'application/json'},
+            body : JSON.stringify({
+                title: 'Udating', body: 'Updating', userId: 1
+            })
+        })
+        .then(res => res.json())
+        .then(data => console.log(data));
+
+    // DELETE Method
+        fetch('https://jsonplaceholder.typicode.com/posts/1',{
+            method : 'DELETE'
+        })
+        .then(() => console.log('DELETED...'));
+    </script>
+
+    <script>
+        const instance = axios.create({
+            baseURL : 'https://api.example.com',
+            headers : {'Authorization':'Bearer token'}
+        });
+
+        instance.interceptors.request.use(config => {
+            config.headers['Cookie'] = 'session=abc123';
+            return config;
+        });
+
+        axios.get('https://jsonplaceholder.typicode.com/posts/1')
+            .then(res => console.log(res.data));
+
+        axios.post('https://jsonplaceholder.typicode.com/posts', {
+            title : 'foo',
+            body : 'bar',
+            userId:1
+        })
+        .then(res => console.log(res.data));
+    </script> -->
+
+
+
+
+    <!-- <div>
+        <p id="clock2">01 - 01 - 34</p>
+        <button id="btn">Clock</button>
+        <br>
+        <br>
+        <span>Date :</span> <span id="date"></span><br><br>
+    </div>
+    <script>
+        const clock2 = document.getElementById('clock2');
+        const btn = document.getElementById('btn');
+        const date = document.getElementById('date');
+
+        btn.addEventListener('click', () => {
+            
+            setInterval(() => {
+                const time = new Date();
+    
+                clock2.innerText =
+                    time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+            }, 1000);
+        })
+
+        const date2 = new Date();
+        date.innerText = date2.toLocaleDateString();
+    </script>
+
+
+ -->
+
+
+    <form id="signup">
+        <label>
+            Username :
+            <input type="text" id="username">
+            <small class="error"></small>
+        </label><br><br>
+
+        <label>
+            Email :
+            <input type="email" id="email">
+            <small class="error"></small>
+        </label><br><br>
+
+        <label>
+            Password :
+            <input type="password">
+            <small class="error"></small>
+        </label><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('signup');
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+
+        function showError(input, message) {
+            const error = input.nextElementSibling;
+            error.innerText = message;
+            input.style.borderColor = 'red';
+        }
+
+        function showSuccess(input) {
+            const error = input.nextElementSibling;
+            error.innerText = "";
+            input.style.borderColor = 'green';
+        }
+
+        username.addEventListener("input", () => {
+            if (username.value.trim().length < 3) {
+                showError(username, "Username must be at least 3 characters");
+            } else {
+                showSuccess(username);
+            }
+        });
+
+        email.addEventListener("input", () => {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regex.test(email.value)) {
+                showError(email, "Enter a valid email");
+            } else {
+                showSuccess(email);
+            }
+        });
+
+        password.addEventListener("input", () => {
+            if (password.value, length < 6) {
+                showError(password, "Password must be at least 6 characters");
+            } else {
+                showSuccess(password);
+            }
+        });
+
+        form.addEventListener('submit', (e) => {
+            if (
+                username.value.lenght < 3 ||
+                !email.value.includes("@") ||
+                password.value.lenght < 6
+            ) {
+                e.preventDefault();
+                alert("Fix errors before submitting");
+            }
+        });
+    </script>
+
+    <p>This is <em>very important</em> information.</p>
+    <p>My pet is a <ins>dog</ins>.</p>
+    <p>My pet is a <del>cat</del></p>
+    <p> Was <s>$10</s>, now $8.</p>
+    <p>This is <u>underlined</u>.</p>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <table border>
+        <caption>Great Founders salary</caption>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Full Name.</th>
+                <th>Position</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1.</td>
+                <td>Bill Gates</td>
+                <td>Founder MicroSoft</td>
+                <td>$1000</td>
+            </tr>
+
+            <tr>
+                <td>2.</td>
+                <td>Steve Jobs</td>
+                <td>Founder Apple</td>
+                <td>$1200</td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>Larry Page</td>
+                <td>Founder Google</td>
+                <td>$1300</td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td>Mark Zuckerberg</td>
+                <td>Founder FaceBook</td>
+                <td>$1500</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <input type="email" id="email" name="user_email">
+
+    <select id="country" name="user_country">
+        <option value="india">India</option>
+        <option value="usa">USA</option>
+        <option value="uk">UK</option>
+    </select>
+
+
+
+
+    <h1>Anchor tag</h1>
+    <a href="https://home.web.cern.ch/science/computing/birth-web" target="_blank" title="click on this fast">
+        first_website </a> <br>
+    <a href="mailto:jayaprasadb@gmail.com" class="aaa">mailme</a>
+    <a href="tel:+919642564568" 
+    
+    
+    
+    <div class="container">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+
+
+</body>
+
+</html>
