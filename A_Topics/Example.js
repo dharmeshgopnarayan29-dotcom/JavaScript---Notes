@@ -94,20 +94,20 @@ while (e < 3) {
 }
 
 
-let a = 1;                                       // do...while Loop
-do {
+let a = 1;                                       // do...while Loop 
+do {                                             // executes the code block at least once, before checking the condition.
     console.log("a =",a);
     a++;
 } while (a < 4);
 
 
-let values = ["Apple", "Orange", "Mango"]        // for...of Loop
+let values = ["Apple", "Orange", "Mango"]        // for...of Loop (Use for arrays)
 for (let value of values) {
     console.log(value);
 }
 
 
-let student = {name: "John", age: 20, grade: "A"};     // for...in loop
+let student = {name: "John", age: 20, grade: "A"};     // for...in loop  (Use for objects)
 for (let key in student) {
     console.log(key, ":", student[key]);
 }
@@ -579,10 +579,6 @@ const arr3 = [1,2,3,4,5];
         const [v = 5, w = 15] = [100];
         console.log(v,w);              // Output : 100 15
 
-        // Rest Operator :
-        const [first, ...rest] = [1,2,3,4];
-        console.log(rest);             // Output : [2,3,4]
-
     // 2. Object Destructuring :
         const user1345 = { name1345: "Hari", age: 25, address: "Bangalore" };
         const { name1345, age } = user1345;
@@ -597,7 +593,7 @@ const arr3 = [1,2,3,4,5];
             // Default Values
                 // Defaults can be set if a property is missing:
                 const { country = "India" } = user;
-                console.log(country); // "India"
+                console.log(country);            // "India"
 
             // Nested Destructuring
                 // Extract properties from nested objects:
@@ -635,3 +631,43 @@ const arr3 = [1,2,3,4,5];
     user2.greet();              // Hello, my name is Mita and I am 30 years old.
 
     
+// Constructor Function :
+    // the new keyword is used to create an object from a constructor function or class.
+        // When you use new, JavaScript:
+            // 1. Creates a new empty object
+            // 2. Sets the object’s prototype
+            // 3. Binds this to the new object
+            // 4. Returns the object automatically
+
+
+
+// Promises :
+    let promise = new Promise((resolve, reject) => {
+    // async operation
+    if (success) {
+        resolve("Operation successful!");
+    } else {
+        reject("Something went wrong!");
+    }
+    });
+
+// Promises Chaining :
+    // Promise chaining in JavaScript is a technique where multiple asynchronous operations are executed sequentially by returning promises inside .then() handlers.
+
+    // Example :
+    function task(message, delay) {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+            console.log(message);
+            resolve(message);
+            }, delay);
+        });
+        }
+
+        task("Task 1 completed", 1000)
+            .then(() => task("Task 2 completed", 1000))
+            .then(() => task("Task 3 completed", 1000))
+            .catch((error) => console.error("Error:", error));
+
+
+        
